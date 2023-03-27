@@ -1,0 +1,24 @@
+hydra:
+  run:
+    dir: ./logging/${now:%Y-%m-%d}/${now:%H-%M-%S}/hydra
+
+model:
+  n_embedding: 32  # type=int, help="Embedding size for each token"
+  block_size: 8  # type=int, help='Context length for data loading.'
+
+data:
+  input_text_path: 'data/tinyshakespeare/input.txt'  # type=str, help='Path to input text file'
+  split_ratio: 0.9  # type=float, help='Train:Test split ratio.'
+
+loader:
+  batch_size: 4  # type=int, help='Number of examples for data loading.'
+
+training:
+  learning_rate: 1e-3  # type=float, help="Starting learning rate"
+  epochs: 1  # type=int, help="Number of iterations of training over the full train dataset"
+  debug:
+    enabled: True  # type=bool, help="Whether or not to use the following debugging flags"
+    limit_train_batches: 10_000  # type=int, help="Debugging, how many batches to train on"
+
+logging:
+  lightning_log_root: "logging/${now:%Y-%m-%d}/${now:%H-%M-%S}"  # type=str, help="Root path to output logs files to"
