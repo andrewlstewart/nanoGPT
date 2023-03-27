@@ -123,6 +123,8 @@ class MHSAModel(pl.LightningModule):
         targets = targets.view(batch_size*time)
         loss = torch.nn.functional.cross_entropy(logits, targets)
 
+        self.log_dict({"Loss": loss})
+
         return loss
 
     def forward(self, idx):
