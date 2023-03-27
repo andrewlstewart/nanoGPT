@@ -27,6 +27,7 @@ class BigramLanguageModel(pl.LightningModule):
         super().__init__()
         self.token_embedding_table = torch.nn.Embedding(vocab_size, model_config.n_embedding)
         # Because attention will effectively ignore position, (set operation), reintroduce position via additional embedding
+        #1hr12m46s
         self.position_embedding_table = torch.nn.Embedding(model_config.block_size, model_config.n_embedding)
         self.language_model_head = torch.nn.Linear(model_config.n_embedding, vocab_size)
 
